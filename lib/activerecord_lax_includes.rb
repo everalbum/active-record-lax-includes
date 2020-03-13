@@ -20,7 +20,7 @@ module ActiveRecordLaxIncludes
       association = association_instance_get(name)
 
       if association.nil?
-        if reflection = self.class._reflect_on_association(name)
+        if reflection = self.class.reflect_on_association(name)
           association = reflection.association_class.new(self, reflection)
           association_instance_set(name, association)
         elsif !ActiveRecord.lax_includes_enabled?
